@@ -1,8 +1,14 @@
 <template>
   <div class="tab-bar-item" @click="itemClick">
-      <div v-if="!isActive"><slot name="item-icon"></slot></div>
-      <div v-else><slot name="item-icon-active"></slot></div>
-      <div :style="activeStyle"><slot name="item-text"></slot></div>
+      <div v-if="!isActive">
+          <slot name="item-icon"></slot>
+        </div>
+      <div v-else>
+          <slot name="item-icon-active"></slot>
+        </div>
+      <div :style="activeStyle">
+          <slot name="item-text"></slot>
+          </div>
       
   </div>
 </template>
@@ -27,7 +33,7 @@ export default {
   methods:{
     itemClick(){
       this.$router.replace(this.path)
-      console.log('itemClick')
+      //console.log('itemClick')
     }
   },
   computed:{
@@ -46,28 +52,5 @@ export default {
 }
 </script>
 
-<style>
-#tab-bar{
-    display: flex;
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;  
-    background: #f6f6f6;
-    box-shadow: 0 -2px 2px rgba(100, 100, 100, 0.2);
-}
-.tab-bar-item{
-    flex: 1;
-    text-align: center;
-    height: 49px;
-    vertical-align: middle;
-    margin-top: 2px;
-}
-.tab-bar-item img{
-    width:24px ;
-    height: 24px;
-}
-.color{
-    color:red;
-}
+<style scoped>
 </style>

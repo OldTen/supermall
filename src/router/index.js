@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 const Cart = () =>
     import ("../views/cart/Cart")
 const Category = () =>
@@ -7,9 +7,12 @@ const Profile = () =>
     import ("../views/profile/Profile")
 const Home = () =>
     import ("../views/home/Home")
+const Detail = () =>
+    import ("../views/detail/Detail")
 const routes = [{
+        //设置默认显示
         path: '',
-        redirect: '/cart'
+        redirect: '/home'
     },
     {
         path: '/home',
@@ -26,11 +29,16 @@ const routes = [{
     {
         path: '/profile',
         component: Profile
+    },
+    {
+        //动态路由
+        path: '/detail/:iid',
+        component: Detail
     }
 ]
 
 const router = createRouter({
-    history: createWebHashHistory(),
+    history: createWebHistory(process.env.BASE_URL),
     routes,
     mode: 'history'
 })
